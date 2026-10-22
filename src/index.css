@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-primary text-white font-sans antialiased;
+  }
+  ::selection {
+    background: rgba(0, 240, 255, 0.3);
+  }
+}
+
+@layer components {
+  .section {
+    @apply relative z-0 mx-auto max-w-7xl px-6 py-20 sm:px-16 sm:py-24;
+  }
+  .section-sub {
+    @apply text-[14px] uppercase tracking-[0.25em] text-secondary sm:text-[16px];
+  }
+  .section-head {
+    @apply font-display text-[32px] font-black text-white xs:text-[40px] sm:text-[52px] md:text-[60px];
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent to-violet bg-clip-text text-transparent;
+  }
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-tertiary/60 backdrop-blur-md;
+  }
+  .green-pink-gradient {
+    background: linear-gradient(90.13deg, #00f0ff 1.9%, #915eff 97.5%);
+  }
+  .contact-card {
+    @apply glass transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-glow;
+  }
+}
+
+.bg-hero-pattern {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(145, 94, 255, 0.18), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 15% 70%, rgba(0, 240, 255, 0.12), transparent 70%);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: #151030;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #915eff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
