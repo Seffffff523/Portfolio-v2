@@ -2,8 +2,8 @@ export const profile = {
   name: "Yousef Laurence Abayan",
   shortName: "Yousef",
   initials: "Y",
-  role: "Full-Stack Developer",
-  roles: ["Full-Stack Developer", "Virtual Tour Developer", "Operations Associate"],
+  role: "Aspiring Full-Stack Developer",
+  roles: ["Aspiring Full-Stack Developer", "Virtual Tour Developer", "Operations Associate"],
   tagline:
     "I build web apps with React, Next.js and Laravel, and craft immersive virtual tours.",
   image: "/images/profile.png",
@@ -113,6 +113,7 @@ export const projects = [
     tags: ["React", "Tailwind CSS", "Firestore", "Firebase"],
     media: "agas",
     video: true,
+    live:"agas.ph",
     featured: true,
   },
   {
@@ -123,6 +124,7 @@ export const projects = [
     tags: ["React", "TypeScript", "Tailwind CSS"],
     media: "seaza",
     video: true,
+    live:"booking.mata.ph",
     featured: true,
   },
   {
@@ -133,6 +135,7 @@ export const projects = [
     tags: ["Laravel", "Vue", "XML"],
     media: "cms",
     video: true,
+    live: "https://www.cebucms.mata.ph/login",
     featured: true,
   },
   {
@@ -143,6 +146,7 @@ export const projects = [
     tags: ["XML", "HTML5", "CSS3", "JavaScript"],
     media: "mactan",
     video: true,
+    live: "https://www.mata.ph/mactannewtown",
     featured: true,
   },
   {
@@ -153,6 +157,7 @@ export const projects = [
     tags: ["3D Modeling", "XML", "HTML5", "JavaScript"],
     media: "costa",
     video: true,
+    live: "https://www.mata.ph/mactannewtown",
   },
   {
     name: "BFP Fire Simulation",
@@ -162,6 +167,7 @@ export const projects = [
     tags: ["C#", "Game Dev"],
     media: "bfp",
     video: true,
+    live: "https://www.mata.ph/bfp",
   },
   {
     name: "Virtual Tour APK – Android Offline",
@@ -178,6 +184,7 @@ export const projects = [
       "The first game from my capstone team. I added the jumpscares and improved the game logic.",
     tags: ["C#", "Game Dev"],
     media: "vlog01",
+    live: "https://sites.google.com/view/vlog-01",
   },
 ];
 

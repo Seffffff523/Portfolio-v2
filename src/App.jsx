@@ -7,8 +7,9 @@ const Projects = lazy(() => import("./pages/Projects"));
 const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
 
 const ScrollManager = () => {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
 
+  // `key` changes on every navigation, so re-clicking the current hash link scrolls again.
   useEffect(() => {
     if (hash) {
       // Wait a frame so the target section exists after a route change.
@@ -16,7 +17,7 @@ const ScrollManager = () => {
     } else {
       window.scrollTo(0, 0);
     }
-  }, [pathname, hash]);
+  }, [pathname, hash, key]);
 
   return null;
 };

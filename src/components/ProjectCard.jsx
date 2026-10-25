@@ -38,42 +38,59 @@ const ProjectMedia = ({ project }) => {
   );
 };
 
-const ProjectCard = ({ project, index }) => (
-  <motion.article
-    variants={fadeIn("up", (index % 3) * 0.12, 0.6)}
-    className="group green-pink-gradient rounded-2xl p-[1px] shadow-card transition-transform duration-300 hover:-translate-y-2"
-  >
-    <div className="flex h-full flex-col rounded-2xl bg-tertiary p-5">
-      <div className="relative h-[200px] w-full overflow-hidden rounded-xl bg-black-100">
-        <ProjectMedia project={project} />
-        {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Open ${project.name}`}
-            className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary/80 text-accent backdrop-blur transition-colors hover:bg-accent hover:text-primary"
-          >
-            <ExternalLink size={18} />
-          </a>
-        )}
-      </div>
+// The whole card opens the project's live link, when it has one.
+const ProjectCard = ({ project, index }) => {
+  const openLink = () => window.open(project.live, "_blank", "noopener,noreferrer");
+  const linkProps = project.live && {
+    role: "link",
+    tabIndex: 0,
+    "aria-label": `Open ${project.name}`,
+    onClick: openLink,
+    onKeyDown: (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openLink();
+      }
+    },
+  };
 
-      <div className="mt-5 flex-1">
-        <p className="text-[12px] font-semibold uppercase tracking-wider text-accent">{project.role}</p>
-        <h3 className="mt-1 font-display text-[22px] font-bold leading-tight text-white">{project.name}</h3>
-        <p className="mt-2 text-[14px] leading-[22px] text-secondary">{project.description}</p>
-      </div>
+  return (
+    <motion.article
+      variants={fadeIn("up", (index % 3) * 0.12, 0.6)}
+      {...linkProps}
+      className={`group green-pink-gradient rounded-2xl p-[1px] shadow-card transition-transform duration-300 hover:-translate-y-2 ${
+        project.live ? "cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-accent" : ""
+      }`}
+    >
+      <div className="flex h-full flex-col rounded-2xl bg-tertiary p-5">
+        <div className="relative h-[200px] w-full overflow-hidden rounded-xl bg-black-100">
+          <ProjectMedia project={project} />
+          {project.live && (
+            <span
+              aria-hidden="true"
+              className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary/80 text-accent backdrop-blur transition-colors group-hover:bg-accent group-hover:text-primary"
+            >
+              <ExternalLink size={18} />
+            </span>
+          )}
+        </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <span key={tag} className="rounded-md border border-violet/30 bg-violet/10 px-2 py-0.5 text-[12px] text-[#dfd9ff]">
-            #{tag}
-          </span>
-        ))}
+        <div className="mt-5 flex-1">
+          <p className="text-[12px] font-semibold uppercase tracking-wider text-accent">{project.role}</p>
+          <h3 className="mt-1 font-display text-[22px] font-bold leading-tight text-white">{project.name}</h3>
+          <p className="mt-2 text-[14px] leading-[22px] text-secondary">{project.description}</p>
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span key={tag} className="rounded-md border border-violet/30 bg-violet/10 px-2 py-0.5 text-[12px] text-[#dfd9ff]">
+              #{tag}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
-  </motion.article>
-);
+    </motion.article>
+  );
+};
 
 export default ProjectCard;
